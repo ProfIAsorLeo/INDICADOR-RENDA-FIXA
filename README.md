@@ -1,32 +1,35 @@
-# Indicador de Investimentos em Renda Fixa
+# Indicador Quantitativo de Renda Fixa: Tome Decisões Inteligentes
 
 Este projeto desenvolve um indicador quantitativo para auxiliar na tomada de decisão de investimentos em títulos de renda fixa brasileiros, com foco inicial em títulos públicos do Tesouro Direto (NTNs, LTNs e LFTs).
 
 ## Objetivo
 
-O objetivo é criar uma ferramenta que forneça sinais de **compra**, **venda** ou **manutenção** para esses títulos, baseado na análise de dados macroeconômicos, financeiros e de indicadores técnicos.
+Objetivo: Fornecer sinais claros de compra, venda ou manutenção para títulos públicos do Tesouro Direto, auxiliando investidores a identificar as melhores oportunidades e otimizar seus retornos.
 
 ## Metodologia
 
 O indicador combina as seguintes informações:
 
-*   **IPCA (Índice Nacional de Preços ao Consumidor Amplo):**  Índice de inflação oficial do Brasil (dados sintéticos, temporariamente).
-*   **Selic (Taxa Básica de Juros):**  Taxa de juros básica da economia brasileira (dados sintéticos, temporariamente).
-*   **Expectativas do Mercado (Relatório Focus):**  Expectativas do mercado para o IPCA e a Selic (coletadas via API do Banco Central).
-*   **Curva de Juros Futuros (DI):**  Taxas de juros negociadas no mercado futuro de DI para diferentes prazos de vencimento (coleta manual da ANBIMA, temporariamente).
-*   **Taxa Neutra de Juros:**  Taxa de juros real que, em teoria, não estimula nem contrai a economia (3 abordagens: estimativa do BCB, taxa FED + 7% e taxa FED + 5%).
+*   **IPCA (Índice Nacional de Preços ao Consumidor Amplo):** Índice de inflação oficial do Brasil ([fonte](https://www3.bcb.gov.br/sgspub/)).
+    *   Dados sintéticos utilizados temporariamente.
+*   **Selic (Taxa Básica de Juros):** Taxa de juros básica da economia brasileira ([fonte](https://www3.bcb.gov.br/sgspub/)).
+    *   Dados sintéticos utilizados temporariamente.
+*   **Expectativas do Mercado (Relatório Focus):** Expectativas do mercado para o IPCA e a Selic ([fonte](https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/)).
+*   **Curva de Juros Futuros (DI):** Taxas de juros negociadas no mercado futuro de DI para diferentes prazos de vencimento ([fonte](https://www.anbima.com.br/)) (coleta manual da ANBIMA, temporariamente).
+*   **Taxa Neutra de Juros:** Taxa de juros real que, em teoria, não estimula nem contrai a economia.
+    *   Três abordagens: estimativa do BCB, taxa FED + 7% e taxa FED + 5%.
 
-O indicador utiliza os seguintes indicadores técnicos:
+**Indicadores Técnicos:**
 
-*   **Médias Móveis Exponenciais (MMEs):**  Para identificar tendências.
-*   **MACD (Moving Average Convergence Divergence):**  Para identificar tendências e pontos de reversão.
-*   **IFR (Índice de Força Relativa):**  Para identificar condições de sobrecompra e sobrevenda (a ser implementado).
-*   **Estocástico:**  Para identificar condições de sobrecompra e sobrevenda (a ser implementado).
-*   **Pontos de Pivô:** Para identificar níveis de suporte e resistência (a ser implementado).
+*   Médias Móveis Exponenciais (MMEs): Para identificar tendências de curto e longo prazo.
+*   MACD (Moving Average Convergence Divergence): Para confirmar tendências e identificar pontos de reversão.
+*   IFR (Índice de Força Relativa): Para identificar condições de sobrecompra e sobrevenda (a ser implementado).
+*   Estocástico: Para identificar condições de sobrecompra e sobrevenda (a ser implementado).
+*   Pontos de Pivô: Para identificar níveis de suporte e resistência (a ser implementado).
 
 ## Estado Atual do Projeto
 
-O projeto está em fase de desenvolvimento.  Atualmente, o indicador:
+O projeto está em fase de desenvolvimento. Atualmente, o indicador:
 
 *   Calcula MMEs e MACD para IPCA e Selic (com dados sintéticos).
 *   Define tendências com base no MACD.
@@ -41,42 +44,35 @@ O projeto está em fase de desenvolvimento.  Atualmente, o indicador:
 
 ## Próximos Passos
 
-1.  **Obter dados reais da Curva de Juros (DI):**  Implementar a coleta manual via planilha do Google Sheets e buscar uma fonte automatizada (API da ANBIMA, B3 ou fontes pagas).
-2.  **Integrar a Curva de Juros e a Taxa Neutra:**  Adicionar os dados da curva de juros e da taxa neutra ao DataFrame e refinar a lógica do indicador.
-3.  **Calcular Spreads, Variações da Curva e Pontos de Pivô:** Implementar o cálculo desses indicadores.
-4.  **Refinar a Regra de Decisão:**  Desenvolver uma regra de decisão mais completa, considerando a curva de juros, a taxa neutra e os pontos de pivô.
-5.  **Implementar IFR e Estocástico.**
-6.  **Definir as Features para o Machine Learning:** Selecionar as variáveis de entrada para o modelo de machine learning.
-7.  **Escolher e Treinar um Modelo de Machine Learning:**  Selecionar um algoritmo e treinar um modelo para prever os sinais do indicador.
-8.  **Testar e Validar o Indicador:**  Avaliar o desempenho do indicador com dados históricos (quando disponíveis) e ajustar a lógica/modelo conforme necessário.
-9.  **Desenvolver a Interface (Node.js e React):**  Criar uma interface web amigável para o indicador.
-10. **Integrar com a API da Nelogica (ProfitDLL):** Automatizar a coleta de dados e, possivelmente, a execução de ordens.
+1.  Obter dados reais da Curva de Juros (DI).
+2.  Integrar a Curva de Juros e a Taxa Neutra na lógica do indicador.
+3.  Calcular Spreads, Variações da Curva e Pontos de Pivô.
+4.  Refinar a Regra de Decisão.
+5.  Implementar IFR e Estocástico.
+6.  Definir as Features para o Machine Learning.
+7.  Escolher e Treinar um Modelo de Machine Learning.
+8.  Testar e Validar o Indicador.
+9.  Desenvolver a Interface (Node.js e React).
+10. Integrar com a API da Nelogica (ProfitDLL).
 
 ## Como Executar o Projeto
 
-1.  Instale as dependências: `pip install pandas numpy requests`.
-2.  Faça o upload dos arquivos CSV (gerados automaticamente ou manualmente) para o ambiente do Colab.
-3.  Execute as células do notebook na ordem correta.
+1.  Clone o repositório: `git clone [link para o repositório]`
+2.  Instale as dependências: `pip install -r requirements.txt`
+3.  Execute o script principal: `python main.py`
+4.  Acesse a interface web: `[endereço da interface web]`
 
 ## Contribuições
 
-Contribuições são bem-vindas!  Sinta-se à vontade para abrir issues, enviar pull requests ou entrar em contato para discutir ideias e melhorias.
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues, enviar pull requests ou entrar em contato para discutir ideias e melhorias.
 
 ## Autor
 
-[Seu Nome e Link para o seu perfil do GitHub]
+[Seu Nome Completo]([link para seu perfil do GitHub])
 
----
+## Licença
 
-**Lembre-se de:**
-
-*   **Substituir as informações entre colchetes `[]` pelas informações do seu projeto.**
-*   **Adicionar o link para o seu repositório do GitHub no final do README.**
-*   **Manter o README atualizado à medida que o projeto evolui.**
-
-**Com a documentação atualizada e o README criado, você estará pronto para criar o repositório no GitHub e compartilhar o seu projeto!**
-
-Me avise se tiver mais dúvidas ou precisar de ajuda com a documentação.
+[MIT](https://choosealicense.com/licenses/mit/)
 
 Projeto de ferramenta para indicador em renda fixa. 
 indicador-renda-fixa/
